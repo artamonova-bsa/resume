@@ -1,0 +1,137 @@
+:root {
+  --bg: #f6f3ee;
+  --surface: #fffdf9;
+  --text: #1d1b19;
+  --muted: #6b655d;
+  --line: #e2dcd2;
+  --accent: #0f6b5c;
+  --accent-soft: #e1efe9;
+  --display: 'Unbounded', system-ui, sans-serif;
+  --body: 'Manrope', system-ui, sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141615;
+    --surface: #1b1e1c;
+    --text: #ece8e1;
+    --muted: #9c978e;
+    --line: #2c302d;
+    --accent: #5ec4ad;
+    --accent-soft: #1f3330;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 16px/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+
+.page { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+
+.state { padding: 40vh 20px 0; text-align: center; color: var(--muted); }
+
+/* Шапка */
+.hero { padding: 72px 0 48px; border-bottom: 1px solid var(--line); }
+.hero__eyebrow {
+  margin: 0 0 16px; color: var(--accent);
+  font: 600 13px/1 var(--body); letter-spacing: .14em; text-transform: uppercase;
+}
+.hero__name { margin: 0; font: 700 clamp(36px, 7vw, 60px)/1.05 var(--display); letter-spacing: -.02em; }
+.hero__title { margin: 16px 0 0; font-size: clamp(18px, 2.6vw, 22px); font-weight: 500; }
+.hero__meta {
+  display: flex; flex-wrap: wrap; gap: 6px 20px;
+  margin: 20px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 15px;
+}
+.hero__actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; height: 42px; padding: 0 20px;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
+  color: var(--text); font: 600 15px var(--body); text-decoration: none; cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); }
+.btn--primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+/* Секции */
+.section {
+  display: grid; grid-template-columns: 180px 1fr; gap: 24px;
+  padding: 40px 0; border-bottom: 1px solid var(--line);
+}
+.section__title {
+  margin: 4px 0 0; color: var(--muted);
+  font: 600 13px/1.4 var(--body); letter-spacing: .12em; text-transform: uppercase;
+}
+.section__body > :first-child { margin-top: 0; }
+.lead { font-size: 18px; line-height: 1.65; }
+.muted { color: var(--muted); }
+
+/* Опыт */
+.job + .job, .edu + .edu { margin-top: 36px; }
+.job__head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.job__name { margin: 0; font: 700 18px/1.35 var(--body); }
+.job__name a { color: inherit; }
+.job__period { flex-shrink: 0; color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.job__role { margin: 4px 0 10px; color: var(--accent); font-weight: 600; font-size: 15px; }
+
+.stack { margin: 14px 0 0; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.stack__row { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 3px 0; font-size: 14px; }
+.stack dt { color: var(--muted); font-weight: 600; }
+.stack dd { margin: 0; }
+
+/* Проекты */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.card { padding: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+.card__title { margin: 0 0 8px; font: 700 17px var(--body); }
+.card p { margin: 0 0 14px; font-size: 15px; }
+
+/* Теги */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.tag { padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 13px; font-weight: 600; }
+
+/* Навыки */
+.skills { margin: 0; }
+.skills__row { display: grid; grid-template-columns: 130px 1fr; gap: 12px; padding: 8px 0; }
+.skills__row + .skills__row { border-top: 1px dashed var(--line); }
+.skills dt { font-weight: 600; padding-top: 3px; }
+.skills dd { margin: 0; }
+
+.checklist { columns: 2; column-gap: 32px; margin: 12px 0 0; padding: 0; list-style: none; }
+.checklist li { break-inside: avoid; padding: 4px 0 4px 22px; position: relative; }
+.checklist li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+/* Достижения */
+.awards { margin: 0; padding: 0; list-style: none; }
+.award { display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 8px 0; }
+.award + .award { border-top: 1px dashed var(--line); }
+.award__year { color: var(--muted); font-variant-numeric: tabular-nums; }
+.award--certificate .award__title { color: var(--muted); }
+
+.footer { padding: 32px 0 48px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 640px) {
+  .hero { padding: 48px 0 36px; }
+  .section { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; }
+  .job__head { flex-direction: column; gap: 2px; }
+  .stack__row, .skills__row { grid-template-columns: 1fr; gap: 2px; }
+  .checklist { columns: 1; }
+}
+
+@media print {
+  :root { --bg: #fff; --surface: #fff; --text: #000; --muted: #555; --accent: #0f6b5c; --accent-soft: #eef5f2; }
+  .hero__actions, .footer { display: none; }
+  .hero { padding: 0 0 20px; }
+  .section { padding: 18px 0; break-inside: avoid; }
+  .page { max-width: none; padding: 0; }
+  a { color: inherit; text-decoration: none; }
+}
